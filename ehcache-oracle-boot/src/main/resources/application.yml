@@ -1,0 +1,51 @@
+server:
+  port: 8810
+ 
+spring:
+  application:
+    name: ehcache-boot
+  profiles:
+    active: dev
+  cache:
+    ehcache:
+      config: classpath:ehcache.xml
+
+logging:
+  level:
+    org:
+      springframework:
+        cache: 'DEBUG'
+    net:
+      sf:
+        ehcache: 'DEBUG'
+--- 
+
+spring:
+  profiles: dev
+  datasource: 
+    url: jdbc:oracle:thin:@localhost:32769/ORCLCDB.localdomain
+    username: sys as sysdba
+    password: Oradoc_db1
+    driver-class-name: oracle.jdbc.OracleDriver
+  jpa:
+    database-platform: org.hibernate.dialect.Oracle10gDialect
+    generate-ddl: false 
+    hibernate: 
+      ddl-auto:  none
+    properties: 
+      hibernate: 
+        dialect: org.hibernate.dialect.Oracle10gDialect
+        show_sql: true
+        hbm2ddl: 
+          auto: none
+        connection: 
+          release_mode: auto
+          autocommit: false
+        generate_statistics: true
+        cache: 
+          region.factory_class: org.hibernate.cache.ehcache.SingletonEhCacheRegionFactory
+          use_second_level_cache: true
+          use_query_cache: true
+        temp: 
+          use_jdbc_metadata_defaults: false
+    show-sql: false 

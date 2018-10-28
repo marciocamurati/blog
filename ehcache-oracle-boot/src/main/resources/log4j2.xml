@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Configuration status="debug">
+	<Appenders>
+<!--		<RollingFile name="FILE" filename="${env:ET_LOGSPATH}/${env:ET_PARTNERAPILOG}" filepattern="${env:ET_PARTNERAPILOG}-%d{yyyy-MM-dd}" append="true">
+			<PatternLayout>
+				<pattern>%d %-6p [$${env:HOSTNAME:-unknown}] GUID(%X{GUID}) (%t) [%c] %m %n</pattern>
+			</PatternLayout>
+
+			<Policies>
+				<TimeBasedTriggeringPolicy interval="1"	modulate="true" />
+			</Policies>
+		</RollingFile>-->
+
+		<Console name="CONSOLE" target="SYSTEM_OUT">
+			<PatternLayout pattern="%d %-6p [$${env:HOSTNAME:-unknown}] (%t) [%c] %m %n" />
+		</Console>
+
+	</Appenders>
+
+
+	<Loggers>
+
+		<Logger name="org.springframework" level="warn" additivity="false">
+			<AppenderRef ref="CONSOLE" />
+		</Logger>
+		
+		<Logger name="org.hibernate" level="warn" additivity="false">
+			<AppenderRef ref="CONSOLE" />
+		</Logger>
+		
+		<Logger name="org.apache" level="error" additivity="false">
+			<AppenderRef ref="CONSOLE" />
+		</Logger>
+		
+		<Logger name="org.dozer" level="error" additivity="false">
+			<AppenderRef ref="CONSOLE" />
+		</Logger>
+		
+		<Logger name="org.quartz" level="error" additivity="false">
+			<AppenderRef ref="CONSOLE" />
+		</Logger>
+		
+		<Logger name="org.hibernate.cache" level="error" additivity="false">
+			<AppenderRef ref="CONSOLE" />
+		</Logger>
+		
+		<Logger name="org.hibernate.SQL" level="error" additivity="false">
+			<AppenderRef ref="CONSOLE" />
+		</Logger>
+		
+		<Logger name="net.sf" level="error" additivity="false">
+			<AppenderRef ref="CONSOLE" />
+		</Logger>
+
+		<Root level="debug" additivity="false">
+			<!--<appender-ref ref="FILE" />-->
+			<appender-ref ref="CONSOLE" />
+			<!-- <appender-ref ref="SYSLOG" /> -->
+		</Root>
+	</Loggers>
+</Configuration>

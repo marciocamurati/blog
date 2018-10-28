@@ -1,0 +1,20 @@
+version: "3"
+
+services: 
+  oracledb: 
+    ports: 
+      - "32769:1521"
+      - "32768:5500"
+      - "8820:8080"
+    container_name: oracledb
+    image: store/oracle/database-enterprise:12.2.0.1
+
+  ehcache-boot: 
+    ports: 
+      - "8810:8810"
+    container_name: ehcache-boot
+    network_mode: "host"
+    depends_on:
+      - "oracledb"
+    entrypoint: ["./wait-for-it.sh","localhost:8820","--timeout=0","--strict", "--", "java", "-jar","app.jar" ]
+    image: saikris12/ehcache-boot:1.0
