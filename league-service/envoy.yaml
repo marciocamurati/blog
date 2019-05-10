@@ -26,7 +26,6 @@ static_resources:
                     retry_on: "5xx"
                     num_retries: 3
                     per_try_timeout: 10s
-
             request_headers_to_add: 
             - header: 
                 key: X-RapidAPI-Key

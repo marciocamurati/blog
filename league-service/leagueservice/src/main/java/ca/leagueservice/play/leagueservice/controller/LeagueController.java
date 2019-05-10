@@ -17,7 +17,7 @@ public class LeagueController {
     @Autowired
     RestTemplate restTemplate;
 
-    @Value
+    @Value("${league.api.url}")
     private String leagueAPIEndpoint;
 
     @GetMapping("/{id}")
