@@ -1,0 +1,36 @@
+version: '3.5'
+services:
+
+  httpproxy:
+    build:
+      context: .
+      dockerfile: Dockerfile-proxy
+    volumes:
+      - ./envoy.yaml:/etc/envoy.yaml
+    networks:
+      httpenvoymesh:
+        aliases:
+          - httpenvoy
+    expose:
+      - "8820"
+      - "8819"
+    ports:
+      - "8820:8820"
+      - "8819:8819"
+
+  printservice:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    networks:
+      httpenvoymesh:
+        aliases:
+          - printservice
+    expose:
+      - "8817"
+    ports:
+      - "8817:8817"
+
+networks:
+  httpenvoymesh:
+    name: httpenvoymesh

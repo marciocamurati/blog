@@ -1,7 +1,7 @@
 # Alpine Linux Image with JDK8
 FROM openjdk:8-alpine
 
-MAINTAINER saikris12@gmail.com
+LABEL MAINTAINER="saikris12@gmail.com"
 
 RUN apk update && apk add bash
 
