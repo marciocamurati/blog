@@ -19,7 +19,7 @@ static_resources:
               - "*"
               routes:
               - match:
-                  prefix: "/leagueTable"
+                  prefix: "/standings"
                 route:
                   cluster: local_service
                   retry_policy: 
@@ -29,10 +29,10 @@ static_resources:
             request_headers_to_add: 
             - header: 
                 key: X-RapidAPI-Key
-                value: e2369a4050mshf8de9e14b531be4p120df4jsn898ac84aff9a
+                value: b43517c9c2msh8646bd893b28666p10649bjsnf0bdec6a0e41
             - header: 
                 key: X-RapidAPI-Host
-                value: api-football-v1.p.rapidapi.com
+                value: api-football-beta.p.rapidapi.com
           http_filters:
           - name: envoy.router
             typed_config: {}  
@@ -47,7 +47,7 @@ static_resources:
     type: strict_dns
     lb_policy: round_robin
     tls_context: 
-      sni: api-football-v1.p.rapidapi.com
+      sni: api-football-beta.p.rapidapi.com
     load_assignment:
       cluster_name: local_service
       endpoints:
@@ -55,7 +55,7 @@ static_resources:
         - endpoint:
             address:
               socket_address:
-                address: api-football-v1.p.rapidapi.com
+                address: api-football-beta.p.rapidapi.com
                 port_value: 443
 admin:
   access_log_path: "/dev/null"

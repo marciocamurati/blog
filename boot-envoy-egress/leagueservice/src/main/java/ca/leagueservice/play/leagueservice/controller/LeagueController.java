@@ -23,8 +23,8 @@ public class LeagueController {
     @GetMapping("/{id}")
     public HttpEntity<String> processRequest(@PathVariable Long id){
 
-        HttpEntity<String> response = restTemplate.exchange(leagueAPIEndpoint + id, HttpMethod.GET, null, String.class);
-        
+        HttpEntity<String> response = restTemplate.exchange(leagueAPIEndpoint + "?league="+id+"&season="+2019, HttpMethod.GET, null, String.class);
+
         return response;
 
     }

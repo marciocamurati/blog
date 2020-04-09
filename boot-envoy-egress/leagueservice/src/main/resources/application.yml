@@ -1,6 +1,6 @@
-server: 
+server:
   port: 8812
 
 league:
   api:
-    url: http://envoy:8001/leagueTable/
+    url: http://envoy:8001/standings
